@@ -7,6 +7,7 @@ class GEO_CHECK_UI(QtWidgets.QWidget):
     def __init__(self):
         super(GEO_CHECK_UI, self).__init__()
         self.setWindowTitle("CHECK WINDOW")
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         self.buildUI()
 
     def buildUI(self):
@@ -81,10 +82,7 @@ class GEO_CHECK_UI(QtWidgets.QWidget):
     def select(self):
         mc.select(clear = True)
         for item in self.rename:
-            while self.rename.count(item) > 1:
-                mc.select(item,add = True)
-                self.rename.pop(item)
-                print (self.rename)
+            mc.select(item,add = True)
     def fix(self):
         mc.Delete(mc.ls(sl=True))
         print('Deleting completed')
